@@ -1,0 +1,100 @@
+/**
+ * Brew guide
+ * Cards that link to full brew guides
+ */
+
+.Lineage__BrewGuide {
+  display: grid;
+  grid-row-gap: 3rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  @media (min-width: 600px) {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  &__Card {
+    position: relative;
+    flex-grow: 1;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    color: hsl(var(--c-black));
+    background-color: hsl(var(--c-white));
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+
+  &__Desc {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 4rem;
+    font-size: var(--f-d1);
+  }
+
+  &__Guide {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    box-shadow: 0.5rem 0.5rem 0.75rem hsla(var(--c-black), 0.1);
+    transition: box-shadow 300ms linear, transform 300ms var(--e-fast-out-linear-in);
+
+    &:hover {
+      box-shadow: 0.75rem 0.75rem 2rem hsla(var(--c-black), 0.05);
+      transform: translate(-0.5rem, -1rem);
+
+      & .Lineage__BrewGuide__Link {
+        color: hsl(var(--c-blue));
+      }
+    }
+  }
+
+  &__Link {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    display: block;
+    font-weight: 700;
+    font-size: 1em;
+    text-align: right;
+    text-transform: uppercase;
+    transition: color 200ms;
+  }
+
+  &__Thumb {
+    height: 12rem;
+    overflow: hidden;
+    background-color: rgb(203, 221, 233);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+
+    @media (min-width: 800px) {
+      height: 16rem;
+    }
+  }
+
+  &__Time {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    height: 0.875rem;
+    font-weight: 500;
+    font-size: var(--f-d2);
+    text-transform: uppercase;
+  }
+
+  &__Title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 4rem;
+    font-size: var(--f-u4);
+    font-family: var(--f-stylistic);
+  }
+}

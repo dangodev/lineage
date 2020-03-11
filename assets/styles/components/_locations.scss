@@ -1,0 +1,117 @@
+/**
+ * Locations
+ * Store Hours
+ */
+
+$breakpoint-s: 600px;
+
+.Lineage__Locations {
+  font-size: var(--f-d1);
+
+  @media (min-width: 600px) {
+    font-size: 1em;
+  }
+
+  // Subcomponents
+
+  &__Heading {
+    margin-bottom: 1em;
+    font-size: var(--f-u5);
+    font-family: var(--f-stylistic);
+    text-align: center;
+  }
+
+  &__List {
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-s) {
+      grid-column-gap: 3rem;
+    }
+  }
+
+  &__Store {
+    grid-column: 2 / span 5;
+    max-width: 20em;
+    margin-top: 2rem;
+
+    &:nth-of-type(even) {
+      grid-column-start: 7;
+    }
+
+    @media (min-width: $breakpoint-s) {
+      grid-column: 4 / span 3;
+      margin-right: 0;
+      margin-left: 0;
+
+      &:nth-of-type(even) {
+        grid-column-start: 7;
+      }
+    }
+
+    &__Address {
+      display: block;
+      margin-top: 0.25rem;
+      color: hsl(var(--c-blue));
+      font-size: var(--f-d1);
+      text-decoration: none;
+    }
+
+    &__Days,
+    &__Hours {
+      display: block;
+      width: 50%;
+      margin: 0.5em 0;
+      color: hsl(var(--c-gray));
+
+      &[data-current-day] {
+        color: hsl(var(--c-black));
+      }
+    }
+
+    &__Hours {
+      text-align: right;
+    }
+
+    &__Name {
+      margin: 0;
+      font-weight: 700;
+      font-size: var(--f-u1);
+      font-family: inherit;
+      line-height: 1;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    &__Open {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+      color: hsl(var(--c-blue));
+      font-size: var(--f-u3);
+      font-family: var(--f-stylistic);
+      line-height: 1;
+
+      &[data-closed] {
+        color: hsl(var(--c-gray));
+      }
+
+      &[data-closing-soon] {
+        color: hsl(var(--c-red));
+      }
+
+      &[data-open] {
+        color: hsl(var(--c-blue));
+      }
+    }
+
+    &__Times {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      font-weight: 500;
+      line-height: 1;
+    }
+  }
+}

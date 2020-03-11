@@ -1,0 +1,87 @@
+<header class="Lineage__Hero">
+  <img
+    class="ofcover"
+    loading="lazy"
+    width="2560"
+    height="1708"
+    src="{{ settings.about_banner.src | img_url: '900x' }}"
+    srcset="{{ settings.about_banner.src | img_url: '600x' }} 600w, {{ settings.about_banner.src | img_url: '900x' }} 900w, {{ settings.about_banner.src | img_url: '1280x' }} 1280w, {{ settings.about_banner.src | img_url: '2560x' }} 2560w"
+    sizes="100vw"
+    alt="Jarrett working through a line of pourovers in the shop"
+  />
+</header>
+
+<article class="Lineage__Page Lineage__Page--About bcow pt4 pb4">
+  <section class="Lineage__Wrapper">
+    <h1>About</h1>
+
+    {{ page.content }}
+
+    <h1 class="pt4 pb2">Lineage Timeline</h1>
+    <ol class="Lineage__Timeline">
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2012-01-01">2012<small>Jan</small></time>
+        Jarrett and Justine decide to start a coffee business, and pick the name “Lineage“
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2012-05-01">2012<small>May</small></time>
+        Bought first perforated drum roaster and retrofitted a grill to roast with an ice cream motor (the coffee was every bit as bad as you’d expect)
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2012-10-01">2012<small>Oct</small></time>
+        Decided to buy our first real 3kg roaster with some help from family
+      </li>
+      <li class="Lineage__Timeline__Event Lineage__Timeline__Event--Range">
+         Destroyed lots of coffee while learning…
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2013-04-01">2013<small>Apr</small></time>
+        Lineage’s Audubon Park Farmer’s Market debut
+      </li>
+      <li class="Lineage__Timeline__Event Lineage__Timeline__Event--Range">
+        Lots of travel and studying from other roasters …
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2013-09-01">2013<small>Sep</small></time>
+        Ryan joined the Lineage Family
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2013-10-01">2013<small>Oct</small></time>
+        Lineage’s Coffee Bar opened at East End Market
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2013-12-01">2013<small>Dec</small></time>
+        Landed our first big wholesale customer and outgrew our 3kg roaster
+      </li>
+      <li class="Lineage__Timeline__Event Lineage__Timeline__Event--Range">
+        Studying, experimentation, and honing the craft …
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2015-01-01">2015<small>Jan</small></time>
+        First sourcing trip to Colombia
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2015-07-01">2015<small>Jul</small></time>
+        Began to open up direct trade relationships in Guatemala, Colombia, Kenya, and Brazil
+      </li>
+      <li class="Lineage__Timeline__Event Lineage__Timeline__Event--Range">
+        Built grower relationships throughout Africa and Central America …
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2017-03-01">2017<small>Mar</small></time>
+        Began work to open our second location in Mills/50
+      </li>
+      <li class="Lineage__Timeline__Event">
+        <time datetime="2017-12-01">2017<small>Dec</small></time>
+        Opened our second location in Downtown Orlando!
+      </li>
+    </ol>
+  </section>
+
+  <section class="Lineage__Wrapper pt4 pb2">
+    {%- render 'locations' -%}
+  </section>
+
+</article>
+
+

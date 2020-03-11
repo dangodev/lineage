@@ -1,0 +1,53 @@
+{%- assign current_hour = "now" | date: "%k" -%}
+
+{%- assign weekdays = "1,2,3,4,5" | split: "," -%}
+{%- assign east_end_hours = "8,9,10,11,12,13,14,15,16,17,18" | split: "," -%}
+{%- assign east_end_closing = "19" -%}
+{%- assign mills_50_hours = "7,8,9,10,11,12,13,14,15,16,17,18" | split: "," -%}
+{%- assign mills_50_closing = "19" -%}
+
+<section class="Lineage__Locations bcow">
+  <h1 class="Lineage__Locations__Heading">Locations</h1>
+  <div class="Lineage__Locations__List">
+    <div class="Lineage__Locations__Store" itemscope itemtype="https://schema.org/LocalBusiness">
+      <h2 class="Lineage__Locations__Store__Name">East End Market</h2>
+      <meta itemprop="address" content="3201 Corrine Dr, Orlando, FL" />
+      <meta itemprop="brand" content="{{ shop.name }}" />
+      <meta itemprop="openingHours" content="8a–7p" />
+      <a class="Lineage__Locations__Store__Address" href="https://www.google.com/maps/search/?api=1&query=3201%20Corrine%20Dr,+Orlando+FL" target="_blank" rel="noopener noreferrer">3201 Corrine Dr</a>
+      {%- comment -%}
+      Note(drew): this uses the Shopify store’s time zone, so it should be Eastern time
+      {%- endcomment -%}
+      {%- if current_hour == east_end_closing - 1 %}
+      <p class="Lineage__Locations__Store__Open" data-closing-soon>Closing Soon</p>
+      {% elsif east_end_hours contains current_hour %}
+      <p class="Lineage__Locations__Store__Open" data-open>Open</p>
+      {% else %}
+      <p class="Lineage__Locations__Store__Open" data-closed>Closed</p>
+      {% endif %}
+      <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
+        <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
+        <dd class="Lineage__Locations__Store__Hours" data-current-day>8a – 7p</dd>
+      </dl>
+    </div>
+
+    <div class="Lineage__Locations__Store" itemscope itemtype="https://schema.org/LocalBusiness">
+      <h2 class="Lineage__Locations__Store__Name">Mills/50</h2>
+      <meta itemprop="address" content="1011 E Colonial Dr, Orlando, FL" />
+      <meta itemprop="brand" content="{{ store.title }}" />
+      <meta itemprop="openingHours" content="7a–7p" />
+      <a class="Lineage__Locations__Store__Address" href="https://www.google.com/maps/search/?api=1&query=1011%20E%20Colonial%20Dr,+Orlando+FL" target="_blank" rel="noopener noreferrer">1011 E. Colonial Dr</a>
+      {%- if current_hour == mills_50_closing - 1 %}
+      <p class="Lineage__Locations__Store__Open" data-closing-soon>Closing Soon</p>
+      {% elsif mills_50_hours contains current_hour %}
+      <p class="Lineage__Locations__Store__Open" data-open>Open</p>
+      {% else %}
+      <p class="Lineage__Locations__Store__Open" data-closed>Closed</p>
+      {% endif %}
+      <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
+        <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
+        <dd class="Lineage__Locations__Store__Hours" data-current-day>7a – 7p</dd>
+      </dl>
+    </div>
+  </div>
+</section>

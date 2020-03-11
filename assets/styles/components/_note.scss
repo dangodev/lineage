@@ -1,0 +1,71 @@
+/**
+ * Display for coffee notes
+ */
+
+.Lineage__Note {
+  font-size: 1rem;
+
+  &__List {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: var(--f-d1);
+  }
+
+  &__Note {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    line-height: 1.75;
+    text-transform: capitalize;
+
+    // pink is for floral notes (all the rest)
+    &::before {
+      display: block;
+      width: 0.5em;
+      height: 0.5em;
+      margin-right: 0.5em;
+      background: hsl(var(--c-pink));
+      border-radius: 50%;
+      content: '';
+    }
+
+    // Words from SCAA taster’s wheel, plus a few
+
+    &[data-note*='almond' i],
+    &[data-note*='caramel' i],
+    &[data-note*='chocolate' i],
+    &[data-note*='cinnamon' i],
+    &[data-note*='dark' i],
+    &[data-note*='earth' i],
+    &[data-note*='honey' i],
+    &[data-note*='molasses' i],
+    &[data-note*='nut' i],
+    &[data-note*='syrup' i],
+    &[data-note*='toffee' i],
+    &[data-note*='vanilla' i] {
+      &::before {
+        background: hsl(var(--c-green));
+      }
+    }
+
+    &[data-note*='apple' i],
+    &[data-note*='berry' i],
+    &[data-note*='berries' i],
+    &[data-note*='coconut' i],
+    &[data-note*='cherry' i],
+    &[data-note*='citrus' i],
+    &[data-note*='fruit' i],
+    &[data-note*='lemon' i],
+    &[data-note*='lime' i],
+    &[data-note*='mango' i],
+    &[data-note*='orange' i],
+    &[data-note*='peach' i],
+    &[data-note*='pear' i],
+    &[data-note*='plum' i],
+    &[data-note*='raisin' i] {
+      &::before {
+        background: hsl(var(--c-yellow));
+      }
+    }
+  }
+}

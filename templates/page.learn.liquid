@@ -1,0 +1,47 @@
+<header class="Lineage__Hero">
+  <img
+    class="ofcover op100"
+    loading="lazy"
+    width="2560"
+    height="1708"
+    src="{{ hero_img }}"
+    src="{{ settings.learn_banner.src | img_url: '900x' }}"
+    srcset="{{ settings.learn_banner.src | img_url: '600x' }} 600w, {{ settings.learn_banner.src | img_url: '900x' }} 900w, {{ settings.learn_banner.src | img_url: '1280x' }} 1280w, {{ settings.learn_banner.src | img_url: '2560x' }} 2560w"
+    sizes="100vw"
+    alt="lineup of coffee equipment: handgrinder, percolator, chemex, Kalita Wave, bonmac"
+  />
+</header>
+
+<article class="Lineage__Page Lineage__Page--Learn bcow">
+  <div class="pt4 pb3">
+    <h1 class="mb0 mb2">Brew Guides</h1>
+
+    {{ page.content }}
+
+  </div>
+
+  <div class="Lineage__Wrapper Lineage__Wrapper--Large pb6">
+    <section class="Lineage__BrewGuide">
+      {%- assign name = 'Pour-over' -%}
+      {%- assign description = 'No other brewing method can match the pour-over’s control and flexibility.' -%}
+      {%- assign time = '5 – 8 min' -%}
+      {%- assign image = 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-6.jpg?13474976391752750718' -%}
+      {%- assign link = 'https://medium.com/@LineageAcademy/how-to-make-perfect-pour-over-coffee-5f3200a6ac3b' -%}
+      {%- render 'brew-guide', name: name, description: description, image: image, time: time, link: link -%}
+
+      {%- assign name = 'Chemex' -%}
+      {%- assign description = 'Great for brewing larger amounts of coffee without sacrificing flavor.' -%}
+      {%- assign time = '10 – 15 min' -%}
+      {%- assign image = 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-5.jpg?13474976391752750718' -%}
+      {%- assign link = 'https://medium.com/@LineageAcademy/how-to-brew-chemex-coffee-69bd2fb216f7' -%}
+      {%- render 'brew-guide', name: name, description: description, image: image, time: time, link: link -%}
+
+      {%- assign name = 'Cold Brew' -%}
+      {%- assign description = 'The best way to get chilled coffee with full-bodied flavor and low acidity.' -%}
+      {%- assign time = '12 – 16 hours' -%}
+      {%- assign image = 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-8.jpg?13474976391752750718' -%}
+      {%- assign link = 'https://medium.com/@LineageAcademy/how-to-make-cold-brew-coffee-at-home-d5b372f780ad' -%}
+      {%- render 'brew-guide', name: name, description: description, image: image, time: time, link: link -%}
+    </section>
+  </div>
+</article>

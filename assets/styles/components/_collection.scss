@@ -1,0 +1,20 @@
+/**
+ * Grid view for products
+ */
+
+.Lineage__Collection {
+  display: grid;
+  grid-gap: 2rem;
+
+  &__Subheading {
+    font-size: var(--f-u4);
+    font-family: var(--f-stylistic);
+    text-align: center;
+  }
+
+  &--Compact {
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

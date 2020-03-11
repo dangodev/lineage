@@ -1,0 +1,47 @@
+@font-face {
+  font-display: swap;
+  font-weight: 400;
+  font-family: 'FF DIN';
+  font-style: normal;
+  src: url('font-ffdin-400.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 400;
+  font-family: 'FF DIN';
+  font-style: italic;
+  src: url('font-ffdin-400-italic.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 500;
+  font-family: 'FF DIN';
+  font-style: normal;
+  src: url('font-ffdin-500.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 700;
+  font-family: 'FF DIN';
+  font-style: normal;
+  src: url('font-ffdin-700.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 700;
+  font-family: 'FF DIN';
+  font-style: italic;
+  src: url('font-ffdin-700-italic.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 400;
+  font-family: 'Kaufmann';
+  font-style: normal;
+  src: url('font-kaufmann-700.woff2') format('woff2'), url('font-kaufmann-700.woff') format('woff');
+}

@@ -1,0 +1,29 @@
+<header class="Lineage__Nav" :data-open="isOpen" x-data="{ isOpen: false }">
+  <button class="Lineage__Nav__MobileOpen" type="button" aria-label="Open Mobile Menu" @click="isOpen = true">
+    <img src="{{ 'icon-hamburger.svg' | asset_url }}" alt="Open Nav" />
+  </button>
+  <div class="Lineage__Nav__Logo">
+    <a href="/">
+      <img src="{{ 'lineage.svg' | asset_url }}" alt="Lineage Coffee Roasting, Orlando" />
+    </a>
+  </div>
+  <nav class="Lineage__Nav__List">
+    <button class="Lineage__Nav__MobileClose" type="button" aria-label="Close Mobile Menu" @click="isOpen = false"></button>
+    {%- for link in linklists.main-menu.links -%}
+      <a class="Lineage__Nav__Link" href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}style="transition-delay:{{ forloop.index | minus: 1 | times: 50 }}ms">{{ link.title }}</a>
+    {%- endfor -%}
+    {%- if shop.customer_accounts_enabled -%}
+      {%- if customer -%}
+        <a class="Lineage__Nav__Link" href="/account">account</a>
+        {{ 'log out'  | customer_logout_link }}
+      {%- else -%}
+        {{ 'log in ' | customer_login_link }}
+        {{ 'register' | customer_register_link }}
+      {%- endif -%}
+    {%- endif -%}
+  </nav>
+  <a class="Lineage__Nav__Cart" href="/cart"{% if cart.items.size == 0 %} data-empty{% endif %} aria-label="Open Cart">
+    <span>Cart</span>
+    {{ cart.items.size }}
+  </a>
+</header>

@@ -1,0 +1,35 @@
+/**
+ * Hero
+ * Large image that introduces each page
+ */
+
+$breakpoint-s: 600px;
+
+.Lineage__Hero {
+  position: relative;
+  height: 37.5vh;
+  max-height: 50vw;
+  overflow: hidden;
+  font-size: 1rem;
+  background: hsl(var(--c-pink));
+
+  & h1 {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    font-size: var(--f-u8);
+    font-family: var(--f-stylistic);
+    text-align: center;
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: $breakpoint-s) {
+    height: 62.5vh;
+  }
+
+  &--Short {
+    max-height: 37.5vh;
+  }
+}

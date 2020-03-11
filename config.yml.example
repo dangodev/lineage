@@ -1,0 +1,6 @@
+development:
+  theme_id:
+  password:
+  store:
+  ignore_files:
+    - '*.scss'

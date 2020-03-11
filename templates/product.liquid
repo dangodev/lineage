@@ -1,0 +1,149 @@
+{%- unless product.type == 'Coffee Beans' or product.type == 'Coffee Subscription' -%}
+<header class="Lineage__Hero">
+  {%- for image in product.images -%}
+  <img
+    itemprop="image"
+    class="ofcover"
+    src="{{ image.src | img_url: '800x' }}"
+    srcset="{{ image.src | img_url: '600x' }} 600w, {{ image.src | img_url: '900x' }} 900w, {{ image.src | img_url: '1280x' }} 1280w, {{ image.src | img_url: '1920x' }} 1920w, {{ image.src | img_url: '2560x' }} 2560w"
+    sizes="100vw"
+    width="1800"
+    height="1350"
+    alt="{{ image.alt | escape }}"
+  />
+  {%- endfor -%}
+</header>
+{%- endunless -%}
+
+<div class="bcow pb2" itemscope itemtype="https://schema.org/Product">
+  <div class="Lineage__Wrapper pl3 pr3 pt2 pb2 bcw">
+    <meta content="{{ shop.name }}" itemprop="brand"/>
+    <meta content="{{ product.created_at }}" itemprop="releaseDate"/>
+    <link itemprop="url" href="{{ shop.url }}{{ product.url | within: collection }}"/>
+
+    <h1 class="Lineage__ProductView__Heading mb2" itemprop="name">
+      {{ product.title }}
+      <small>{{ product.type }}</small>
+    </h1>
+
+    <div class="Lineage__ProductView__Grid">
+      <div class="Lineage__ProductView__Body">
+        {%- if product.type == 'Coffee Beans' -%}
+          <div class="Lineage__ProductView__Meta mb2">
+            <div class="Lineage__ProductView__Deets">
+              <h4 class="mt0">Deets</h4>
+              {%- assign metafields = product.metafields.c_f -%}
+              <dl>
+              {%- if metafields.country -%}<dt>Country</dt><dd>{{ metafields.country }}</dd>{%- endif -%}
+              {%- if metafields.elevation -%}<dt>Elevation</dt><dd>{{ metafields.elevation }}</dd>{%- endif -%}
+              {%- if metafields.farm -%}<dt>Farm</dt><dd>{{ metafields.farm }}</dd>{%- endif -%}
+              {%- if metafields.harvest -%}<dt>Harvest</dt><dd>{{ metafields.harvest }}</dd>{%- endif -%}
+              {%- if metafields.processing_method -%}<dt>Processing Method</dt><dd>{{ metafields.processing_method }}</dd>{%- endif -%}
+              {%- if metafields.variety -%}<dt>Variety</dt><dd>{{ metafields.variety }}</dd>{%- endif -%}
+              </dl>
+            </div>
+            <div>{%- render 'notes', notes: product.tags -%}</div>
+          </div>
+        {%- endif -%}
+        <h4 class="mt0">Description</h4>
+        <div itemprop="description">
+          {{ product.description }}
+        </div>
+      </div>
+      <aside class="Lineage__ProductView__Aside">
+        <form action="/cart/add" enctype="multipart/form-data" id="AddToCartForm" method="post" x-data="product()" data-productid="{{ product.id }}">
+
+          <!-- Begin ReCharge code -->
+          {%- if product.available -%}{% include 'subscription-product' %}{%- endif -%}
+          <!-- End ReCharge code -->
+
+          <select class="Lineage__ProductView__Hidden" id="id" name="id" data-productid="{{ product.id }}">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if product.selected_variant == variant.id %} selected{% endif %} data-price="{{ variant.price }}" data-img="img-{{ variant.image.id }}" data-option1="{{ variant.option1 }}" data-option2="{{ variant.option2 }}" data-option3="{{ variant.option3 }}">
+                {{ variant.title }}
+              </option>
+            {% endfor %}
+          </select>
+
+          {%- if product.variants.size > 1 -%}
+            {%- for option in product.options_with_values -%}
+              <div class="mb2">
+              <label class="Lineage__ProductView__Label mb1" for="option{{ forloop.index }}">{{ option.name }}</label>
+              <div class="Lineage__Select mb1">
+                <select class="Lineage__Select__Input" id="option{{ forloop.index }}" @change="updateSelection">
+                  {% for value in option.values %}
+                    <option {% if option.selected_value == value %} selected {% endif %}>
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <div class="Lineage__Select__Icon"></div>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <div class="mb1">
+            <div class="Lineage__ProductView__Label mb1">Quantity</div>
+            <div class="Lineage__Stepper">
+              <button class="Lineage__Stepper__Dec" type="button" @click="q = Math.max(1, q - 1)">–</button>
+              <input class="Lineage__Stepper__Input" id="q" name="quantity" type="text" inputmode="numeric" pattern="[0-9]*" value="1" :value="q" />
+              <button class="Lineage__Stepper__Inc" type="button" @click="q += 1">+</button>
+            </div>
+            <div class="Lineage__ProductView__Wholesale tac mt1 mb1">
+              Buying in bulk? <br/>
+              Learn about <a href="{{ pages.wholesale.url }}">wholesale</a>
+            </div>
+          </div>
+
+          <div class="mb1 tac" id="variant-price">
+            {% assign price = product.selected_or_first_available_variant.price %}
+            {% assign compare_at_price = product.selected_or_first_available_variant.compare_at_price %}
+            {% render 'price', price: product.price %}
+          </div>
+
+          <div class="mt1 mb1">
+            {%- if product.available -%}
+            <button class="Lineage__Button" id="AddToCart" name="add" type="submit" style="display:block;width:100%;">Add to cart</button>
+            {%- else -%}
+            <button type="button" disabled>Out of Stock</button>
+            {% endif %}
+          </div>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  {%- if product.type == 'Coffee Beans' or product.type == 'Coffee Subscription' -%}
+    <h2 class="mt4 mb4">More Coffee</h2>
+
+    <div class="Lineage__Hero Lineage__Hero--Short"><img class="ofcover" src="{{ product.collections.first.image | img_url: '1920x' }} }}" /></div>
+
+    {%- render 'collection', collection: product.collections.first, size: 'compact' -%}
+  {%- endif -%}
+
+  <script>
+    function product() {
+      return {
+        // data
+        option1: '{{ product.options_with_values[0].selected_value }}',
+        option2: '{{ product.options_with_values[1].selected_value }}',
+        option3: '{{ product.options_with_values[2].selected_value }}',
+        price: {{ product.price }},
+        q: 1,
+        selectedVariant: '{{ product.selectedVariant }}',
+
+        // methods
+        updateSelection: function(evt) {
+          this[evt.target.id] = evt.target.value; // option1, option2, or option3
+          const variant = document.querySelector(`#id [data-option1="${this.option1}"][data-option2="${this.option2}"][data-option3="${this.option3}"]`);
+          document.getElementById('id').value = variant.value;
+          this.price = parseInt(variant.getAttribute('data-price'));
+
+          const search = new URLSearchParams(window.location.search);
+          search.set('variant', variant.value);
+          window.history.replaceState(undefined, undefined, `?${search.toString()}`);
+        }
+      }
+    }
+  </script>
+</div>

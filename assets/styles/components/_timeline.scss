@@ -1,0 +1,68 @@
+/**
+ * Timeline
+ * The History of the World, I Guess
+ */
+
+.Lineage__Timeline {
+  list-style: none;
+
+  & time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 4rem;
+    height: 4rem;
+    margin-right: 2rem;
+    font-weight: 700;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+
+    & small {
+      display: block;
+      font-size: var(--f-d2);
+      letter-spacing: 0.125em;
+      text-transform: uppercase;
+    }
+  }
+
+  // ----------
+  //  Elements
+  // ----------
+
+  &__Event {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &--Range {
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      color: hsl(var(--c-offwhite));
+      letter-spacing: 0.03125em;
+      text-transform: uppercase;
+      background: hsl(var(--c-black));
+    }
+
+    & + .Lineage__Timeline__Event {
+      margin-top: 3rem;
+
+      &::before {
+        position: absolute;
+        bottom: 100%;
+        left: 2rem;
+        display: block;
+        height: 3rem;
+        border-left: 1px solid hsl(var(--c-black));
+        content: '';
+      }
+
+      &--Range {
+        &::before {
+          left: 1rem;
+        }
+      }
+    }
+  }
+}

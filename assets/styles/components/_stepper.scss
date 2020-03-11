@@ -1,0 +1,58 @@
+/**
+ * Quantity
+ * Stepper component
+ */
+
+.Lineage__Stepper {
+  display: flex;
+  background: hsl(var(--c-white));
+
+  &__Input {
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 2rem;
+    padding: 0;
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: center;
+    background: none;
+    border: none;
+    transition: color 150ms linear;
+    appearance: none;
+
+    @media (min-width: 600px) {
+      width: 4rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__Dec,
+  &__Inc {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    font-weight: 400;
+    font-size: var(--f-u2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: border-color 150ms linear, background 150ms linear;
+    appearance: none;
+
+    &:focus,
+    &:hover {
+      background: rgba(black, 0.05);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

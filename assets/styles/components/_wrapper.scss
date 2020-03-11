@@ -1,0 +1,17 @@
+/**
+ * Wrapper
+ * Horizontal spacing component
+ */
+
+.Lineage__Wrapper {
+  box-sizing: border-box;
+  max-width: 62.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+
+  &--Large {
+    max-width: 80rem;
+  }
+}

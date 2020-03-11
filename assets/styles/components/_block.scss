@@ -1,0 +1,19 @@
+/**
+ * Block
+ * Large color blocks
+ */
+
+.Lineage__Block {
+  &__Body {
+    max-width: 28rem;
+    font-size: var(--f-u1);
+    line-height: 1.75;
+  }
+
+  &__Heading {
+    font-size: var(--f-u4);
+    font-family: var(--f-body);
+    text-align: left;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,4 @@
+<div class="Lineage__Price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+  <span content="USD" itemprop="priceCurrency">$</span>
+  <span itemprop="price" x-html="price ? price.toString().replace(/(\d\d)$/, '.$1') : undefined">{{ price | money | replace: '$' '' }}</span>
+</div>

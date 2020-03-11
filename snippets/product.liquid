@@ -1,0 +1,29 @@
+{%- assign metafields = product.metafields.c_f -%}
+<a class="Lineage__ProductCard Lineage__ProductCard--{{ metafields.color }}" href="{{ product.url | within: collection }}" itemscope itemtype="https://schema.org/Product" data-color="{{ metafields.c_f.color }}">
+  <figure class="Lineage__ProductCard__Img">
+    <img itemprop="image" width="384" height="480" src="{{ product.images[0].src | img_url: '400x' }}" loading="lazy" alt="{{ product.images[0].alt | escape }}" />
+  </figure>
+  <div class="Lineage__ProductCard__Inner">
+    <meta content="Lineage Coffee Roasting" itemprop="brand"/>
+    <meta content="{{ product.created_at }}" itemprop="releaseDate"/>
+    <meta content="{{ product.description | strip_html }}" itemprop="description"/>
+    <link itemprop="url" href="{{ shop.url }}{{ product.url | within: collection }}"/>
+    <div itemprop="name" class="Lineage__ProductCard__Name">{{ product.title }}</div>
+    {%- if product.type == 'Coffee Beans' -%}
+      {%- if metafields.country %}
+      <aside class="Lineage__ProductCard__Meta mb1">
+        {{ metafields.country }}{% if metafields.altitude %} / {{ metafields.altitude }}m{% endif %}
+      </aside>
+      {%- endif -%}
+      {%- render 'notes', notes: product.tags -%}
+    {%- else -%}
+      <div class="Lineage__ProductCard__Description">
+        {{ product.content }}
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="Lineage__ProductCard__Action">
+    {%- render 'price', price: product.price -%}
+    <span class="Lineage__ProductCard__Link">View</span>
+  </div>
+</a>

@@ -1,0 +1,70 @@
+html,
+body {
+  margin: 0;
+}
+
+html {
+  background-color: hsl(var(--c-pink));
+}
+
+body {
+  min-height: 100vh;
+  font-size: 16px;
+  font-family: var(--f-body);
+  background-color: white;
+}
+
+a {
+  color: hsl(var(--c-blue));
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 3em;
+  font-size: var(--f-u6);
+  font-family: var(--f-stylistic);
+  text-align: center;
+
+  & small {
+    display: block;
+    font-weight: 500;
+    font-size: var(--f-d5);
+    letter-spacing: 0.05em;
+  }
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 3em;
+  font-size: var(--f-u4);
+  font-family: var(--f-stylistic);
+  text-align: center;
+}
+
+h4 {
+  margin-bottom: 1em;
+  font-weight: 700;
+  font-size: var(--f-d2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  font-size: var(--f-d1);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+p {
+  max-width: 60em;
+  margin: 2em 0;
+  line-height: 1.5;
+}

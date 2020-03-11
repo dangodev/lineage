@@ -1,0 +1,11 @@
+<header class="Lineage__Hero Lineage__Hero--Short">
+  <h1>{{ collection.title }}</h1>
+  <img
+    class="ofcover op33"
+    src="{{ collection.image | img_url: '800x' }}"
+    srcset="{{ collection.image | img_url: '600x' }} 600w, {{ collection.image | img_url: '900x' }} 900w, {{ collection.image | img_url: '1280x' }} 1280w, {{ collection.image | img_url: '1920x' }} 1920w, {{ collection.image | img_url: '2560x' }} 2560w"
+    sizes="100vw"
+  />
+</header>
+
+{% render 'collection', collection: collection -%}

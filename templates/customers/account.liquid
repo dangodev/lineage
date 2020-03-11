@@ -1,0 +1,6 @@
+<!-- /templates/customers/account.liquid -->
+{% if customer.metafields.subscriptions.customer_string %}
+<!--BeginRechargeCode-->
+<p><a href="/tools/recurring/customer/{{customer.metafields.subscriptions.customer_string}}/subscriptions/">Manage Subscriptions</a></p>
+<!--EndRechargeCode-->
+{% endif %}

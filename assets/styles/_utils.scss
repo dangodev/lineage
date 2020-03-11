@@ -1,0 +1,69 @@
+$directions: 'b' 'bottom', 'l' 'left', 't' 'top', 'r' 'right';
+$max-size: 8;
+
+// (m)argins
+@each $abbr, $direction in $directions {
+  @for $i from 0 through $max-size {
+    .m#{$abbr}#{$i} {
+      margin-#{$direction}: #{$i}rem;
+    }
+  }
+}
+
+// (p)adding
+@each $abbr, $direction in $directions {
+  @for $i from 0 through $max-size {
+    .p#{$abbr}#{$i} {
+      padding-#{$direction}: #{$i}rem;
+    }
+  }
+}
+
+// (b)ackground (c)olor
+.bcow {
+  background-color: hsl(var(--c-offwhite));
+}
+.bcb {
+  background-color: hsl(var(--c-blue));
+}
+.bcw {
+  background-color: white;
+}
+
+// (o)bject-(f)it
+.ofcover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.opcenter {
+  object-position: center center;
+}
+.op33 {
+  object-position: center 33.3333%;
+}
+.op66 {
+  object-position: center 66.6666%;
+}
+.op100 {
+  object-position: center 100%;
+}
+
+// (overflow)
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+// (t)ext-(a)lign
+.tac {
+  text-align: center;
+}
+.tal {
+  text-align: left;
+}
+.tar {
+  text-align: right;
+}

@@ -1,0 +1,25 @@
+/**
+ * FAQ
+ * Section for question—answer blocks
+ */
+
+.Lineage__FAQ {
+  max-width: 48rem;
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+
+  &__Body {
+    max-width: 40em;
+    margin-top: 0;
+  }
+
+  &__Heading {
+    padding-bottom: 0.5em;
+    font-weight: 500;
+    letter-spacing: 0.03125em;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 1px solid hsl(var(--c-gray));
+  }
+}

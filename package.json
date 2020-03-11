@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "sass --no-source-map assets/app.scss:assets/app.css && postcss assets/app.css -o assets/app.min.css",
+    "build:css:watch": "postcss --watch assets/app.css -o assets/app.min.css",
+    "build:sass:watch": "sass --watch --no-source-map assets/app.scss assets/app.css",
+    "dev": "concurrently 'npm run build:sass:watch' 'npm run build:css:watch' 'theme watch'",
+    "deploy": "npm run build && theme deploy",
+    "lint": "stylelint 'assets/**/*.scss'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "cssnano": "^4.1.10",
+    "postcss": "^7.0.27",
+    "postcss-cli": "^7.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.4",
+    "sass": "^1.26.3",
+    "stylelint": "^13.3.2",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.0.0"
+  }
+}

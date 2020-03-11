@@ -1,0 +1,41 @@
+[
+  {
+    "name": "About page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "about_banner",
+        "label": "About Image",
+        "info": "2560px wide required"
+      }
+    ]
+  },
+  {
+    "name": "Learn page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "learn_banner",
+        "label": "Learn Image",
+        "info": "2560px wide required"
+      }
+    ]
+  },
+  {
+    "name": "Wholesale page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "wholesale_banner",
+        "label": "Wholesale Image",
+        "info": "2560px wide required"
+      },
+      {
+        "type": "image_picker",
+        "id": "wholesale_flavor",
+        "label": "Wholesale Image 2",
+        "info": "2560px wide required"
+      }
+    ]
+  }
+]

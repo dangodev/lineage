@@ -1,0 +1,37 @@
+<div class="bcow">
+  <div class="Lineage__Wrapper{% if size == 'compact' %} Lineage__Wrapper--Large{% endif %}">
+    {%- if collection.handle == "coffee" -%}
+      <h2 class="Lineage__Collection__Subheading pt4 mb0">Individual Bags</h2>
+    {%- endif -%}
+    <section class="Lineage__Collection pt3 pb4{% if size == 'compact' %} Lineage__Collection--Compact{% endif %}">
+    {%- for product in collection.products -%}
+      {%- render 'product', product: product -%}
+    {%- else -%}
+      <p>no matches</p>
+    {%- endfor -%}
+    </section>
+    {%- if collection.handle == "coffee" -%}
+      <h2 class="Lineage__Collection__Subheading mt0 mb4">Coffee Subscriptions</h2>
+      <section class="Lineage__Collection mt4 pb4{% if size == 'compact' %} Lineage__Collection--Compact{% endif %}">
+        {%- for product in collections.subscriptions.products -%}
+          {%- render 'product', product: product -%}
+        {%- endfor -%}
+      </section>
+    {%- endif -%}
+
+    {%- if paginate.pages > 1 -%}
+      {{ paginate | default_pagination }}
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if collection.handle == "coffee" -%}
+<footer class="Lineage__Block Lineage__Block--Wholesale bcb pt4 pb4 pl4 pr4">
+  <h1 class="Lineage__Block__Heading mt0 mb0">Wholesale</h1>
+  <p class="Lineage__Block__Body mt1">Every month we ship hundreds of pounds of our just-roasted gourmet coffee to offices and restaurants around the state. Ready to make Lineage part of your workday?</p>
+  <div class="Lineage__Waves">
+    <a class="Lineage__Button Lineage__Button--White ml2" href="{{ pages.wholesale.url }}">Learn More</a>
+    <div class="Lineage__Waves__Wave" style="width:15rem"></div>
+  </div>
+</footer>
+{%- endif -%}

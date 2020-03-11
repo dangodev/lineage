@@ -1,0 +1,92 @@
+<header class="Lineage__Hero">
+  <img
+    class="ofcover"
+    loading="lazy"
+    width="2560"
+    height="1708"
+    src="{{ settings.wholesale_banner.src | img_url: '900x' }}"
+    srcset="{{ settings.wholesale_banner.src | img_url: '600x' }} 600w, {{ settings.wholesale_banner.src | img_url: '900x' }} 900w, {{ settings.wholesale_banner.src | img_url: '1280x' }} 1280w, {{ settings.wholesale_banner.src | img_url: '2560x' }} 2560w"
+    sizes="100vw"
+    alt="Jarrett and Ryan brewing coffee and experimenting in the shop"
+  />
+</header>
+
+<article class="Lineage__Page Lineage__Page--Wholesale bcow">
+  <section class="Lineage__Page--Wholesale__Grid pt4">
+    <div>
+      <h1>{{ page.title }}</h1>
+      {{ page.content }}
+      </div>
+    <aside>
+      <img
+        class="ofcover"
+        loading="lazy"
+        width="2560"
+        height="1708"
+        src="{{ settings.wholesale_flavor.src | img_url: '900x' }}"
+        srcset="{{ settings.wholesale_flavor.src | img_url: '600x' }} 600w, {{ settings.wholesale_flavor.src | img_url: '900x' }} 900w, {{ settings.wholesale_flavor.src | img_url: '1280x' }} 1280w, {{ settings.wholesale_flavor.src | img_url: '2560x' }} 2560w"
+        sizes="(min-width: 600px) 100vw, 50vw"
+        alt="Undershot of an espresso pour with crema visible from the portafilter"
+      />
+    </aside>
+  </section>
+
+  <section class="pt4">
+    <div class="Lineage__Wrapper">
+      <h2>Additional Info</h2>
+      <div class="Lineage__FAQ">
+        {%- assign faq_heading = "What is the minimum Order?" -%}
+        {%- assign faq_body = "There’s no minimum, but all wholesale orders are in 5lb increments." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+
+        {%- assign faq_heading = "How am I billed?" -%}
+        {%- assign faq_body = "As a wholesale customer, you can choose between weekly and monthly online invoicing. The higher your order, the more flexibility you have on pricing." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+
+        {%- assign faq_heading = "Can I change up my order?" -%}
+        {%- assign faq_body = "As a wholesale customer, we talk with you every week to confirm your needs for the upcoming week." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+
+        {%- assign faq_heading = "When do shipments go out?" -%}
+        {%- assign faq_body = "MONDAYS are when shipments go out, or are made available for pickup. This is because we roast on Saturday and taste test / package on Sunday. We ship to FL overnight. Local deliveries are also available." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+
+        {%- assign faq_heading = "What is the minimum wholesale contract length?" -%}
+        {%- assign faq_body = "We believe our coffee is the best, and therefore we don’t work on contracts." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+
+        {%- assign faq_heading = "Will you help me find equipment?" -%}
+        {%- assign faq_body = "We’d love to! Not only will we recommend equipment; we have relationships with many high-end equipment manufacturers, and can purchase the equipment at below-retail prices." -%}
+        {%- render "faq-section", faq_heading: faq_heading, faq_body: faq_body %}
+      </div>
+    </div>
+  </section>
+
+  <section class="mt3 pb3">
+    <div class="Lineage__Wrapper tac">
+      <h2>Wholesale Deals</h2>
+      <p>
+        Regularly we send out our weekly specials and offers to our wholesale buyers.
+        <br />
+        Sign up for our regular email list to see what’s new! Unsubscribe any time. No spam. Promise.
+      </p>
+
+      <!-- Mailchimp embed -->
+      <form class="tal mc-embed" action="https://lineageroasting.us14.list-manage.com/subscribe/post?u=5c1c7606596cf9a2e17a43836&id=174c40033a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" noValidate>
+        <fieldset>
+          <label htmlFor="mce-EMAIL">Email Address</label>
+          <input type="email" name="EMAIL" id="mce-EMAIL" />
+        </fieldset>
+        <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_5c1c7606596cf9a2e17a43836_174c40033a" tabIndex={-1} value="" /></div>
+        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
+      </form>
+    </div>
+  </section>
+
+  <section class="mt4 pb6">
+    <div class="Lineage__Wrapper tac">
+      <h2 class="mt2 mb1">Ready to get started?</h2>
+      <p class="mt1">Send an email to <a href="mailto:wholesale@lineageroasting.com">wholesale@lineageroasting.com</a> when you’re ready to try our coffee.  </p>
+    </div>
+  </section>
+</article>
