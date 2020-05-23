@@ -1,10 +1,10 @@
 {%- assign current_hour = "now" | date: "%k" -%}
 
 {%- assign weekdays = "1,2,3,4,5" | split: "," -%}
-{%- assign east_end_hours = "8,9,10,11,12,13,14,15,16,17,18" | split: "," -%}
-{%- assign east_end_closing = "19" -%}
-{%- assign mills_50_hours = "7,8,9,10,11,12,13,14,15,16,17,18" | split: "," -%}
-{%- assign mills_50_closing = "19" -%}
+{%- assign east_end_hours = "8,9,10,11,12,13,14,15" | split: "," -%}
+{%- assign east_end_closing = "16" -%}
+{%- assign mills_50_hours = "7,8,9,10,11,12,13,14,15,16,17" | split: "," -%}
+{%- assign mills_50_closing = "18" -%}
 
 <section class="Lineage__Locations bcow">
   <h1 class="Lineage__Locations__Heading">Locations</h1>
@@ -27,7 +27,7 @@
       {% endif %}
       <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
         <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
-        <dd class="Lineage__Locations__Store__Hours" data-current-day>8a – 7p</dd>
+        <dd class="Lineage__Locations__Store__Hours" data-current-day>8a – 4p</dd>
       </dl>
     </div>
 
@@ -46,7 +46,7 @@
       {% endif %}
       <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
         <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
-        <dd class="Lineage__Locations__Store__Hours" data-current-day>7a – 7p</dd>
+        <dd class="Lineage__Locations__Store__Hours" data-current-day>7a – 6p</dd>
       </dl>
     </div>
   </div>
