@@ -23,34 +23,19 @@ $breakpoint-s: 600px;
 
   &__List {
     display: grid;
-    grid-column-gap: 1rem;
-    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 2rem;
     box-sizing: border-box;
+    padding-top: 1rem;
 
     @media (min-width: $breakpoint-s) {
-      grid-column-gap: 3rem;
+      grid-gap: 2.5rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
   }
 
   &__Store {
-    grid-column: 2 / span 5;
-    max-width: 20em;
-    margin-top: 2rem;
-
-    &:nth-of-type(even) {
-      grid-column-start: 7;
-    }
-
-    @media (min-width: $breakpoint-s) {
-      grid-column: 4 / span 3;
-      margin-right: 0;
-      margin-left: 0;
-
-      &:nth-of-type(even) {
-        grid-column-start: 7;
-      }
-    }
-
     &__Address {
       display: block;
       margin-top: 0.25rem;
@@ -110,6 +95,7 @@ $breakpoint-s: 600px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      margin: 0;
       font-weight: 500;
       line-height: 1;
     }
