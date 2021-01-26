@@ -1,17 +1,3 @@
-{%- comment -%}
-Note(drew): this uses the Shopify store’s time zone (Settings -> General), so it should be Eastern time
-{%- endcomment -%}
-
-{%- assign current_hour = "now" | date: "%k" -%}
-
-{%- assign weekdays = "1,2,3,4,5" | split: "," -%}
-{%- assign east_end_hours = "8,9,10,11,12,13,14,15,16,17,18,19" | split: "," -%}
-{%- assign east_end_closing_soon = "18" -%}
-{%- assign mills_50_hours = "7,8,9,10,11,12,13,14,15,16,17,18,19" | split: "," -%}
-{%- assign mills_50_closing_soon = "18" -%}
-{%- assign ucf_hours = "8,9,10,11,12,13,14,15,16,17,18,19" | split: "," -%}
-{%- assign ucf_closing_soon = "18" -%}
-
 <section class="Lineage__Locations bcow">
   <h1 class="Lineage__Locations__Heading">Locations</h1>
   <div class="Lineage__Locations__List">
@@ -21,13 +7,7 @@ Note(drew): this uses the Shopify store’s time zone (Settings -> General), so 
       <meta itemprop="brand" content="{{ shop.name }}" />
       <meta itemprop="openingHours" content="8a–7p" />
       <a class="Lineage__Locations__Store__Address" href="https://www.google.com/maps/search/?api=1&query=3201%20Corrine%20Dr,+Orlando+FL" target="_blank" rel="noopener noreferrer">3201 Corrine Dr</a>
-      {%- if current_hour == east_end_closing_soon %}
-      <p class="Lineage__Locations__Store__Open" data-closing-soon>Closing Soon</p>
-      {% elsif east_end_hours contains current_hour %}
-      <p class="Lineage__Locations__Store__Open" data-open>Open</p>
-      {% else %}
-      <p class="Lineage__Locations__Store__Open" data-closed>Closed</p>
-      {% endif %}
+      <p id="loc-eastend" class="Lineage__Locations__Store__Open" data-open>Open</p>
       <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
         <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
         <dd class="Lineage__Locations__Store__Hours" data-current-day>8a – 7p</dd>
@@ -40,13 +20,7 @@ Note(drew): this uses the Shopify store’s time zone (Settings -> General), so 
       <meta itemprop="brand" content="{{ store.title }}" />
       <meta itemprop="openingHours" content="7a–7p" />
       <a class="Lineage__Locations__Store__Address" href="https://www.google.com/maps/search/?api=1&query=1011%20E%20Colonial%20Dr,+Orlando+FL" target="_blank" rel="noopener noreferrer">1011 E. Colonial Dr</a>
-      {%- if current_hour == mills_50_closing_soon %}
-      <p class="Lineage__Locations__Store__Open" data-closing-soon>Closing Soon</p>
-      {% elsif mills_50_hours contains current_hour %}
-      <p class="Lineage__Locations__Store__Open" data-open>Open</p>
-      {% else %}
-      <p class="Lineage__Locations__Store__Open" data-closed>Closed</p>
-      {% endif %}
+      <p id="loc-mills50" class="Lineage__Locations__Store__Open" data-open>Open</p>
       <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
         <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
         <dd class="Lineage__Locations__Store__Hours" data-current-day>7a – 7p</dd>
@@ -59,13 +33,7 @@ Note(drew): this uses the Shopify store’s time zone (Settings -> General), so 
       <meta itemprop="brand" content="{{ store.title }}" />
       <meta itemprop="openingHours" content="8a–7p" />
       <a class="Lineage__Locations__Store__Address" href="https://www.google.com/maps/search/?api=1&query=11556%20University%20Blvd,+Orlando+FL" target="_blank" rel="noopener noreferrer">11556 University Blvd</a>
-      {%- if current_hour == ucf_closing_soon %}
-      <p class="Lineage__Locations__Store__Open" data-closing-soon>Closing Soon</p>
-      {% elsif ucf_hours contains current_hour %}
-      <p class="Lineage__Locations__Store__Open" data-open>Open</p>
-      {% else %}
-      <p class="Lineage__Locations__Store__Open" data-closed>Closed</p>
-      {% endif %}
+      <p id="loc-ucf" class="Lineage__Locations__Store__Open" data-open>Open</p>
       <dl class="Lineage__Locations__Store__Times" itemprop="openingHours">
         <dt class="Lineage__Locations__Store__Days" data-current-day>Every Day</dt>
         <dd class="Lineage__Locations__Store__Hours" data-current-day>8a – 7p</dd>
@@ -73,3 +41,61 @@ Note(drew): this uses the Shopify store’s time zone (Settings -> General), so 
     </div>
   </div>
 </section>
+
+<script type="module">
+// [open, close] (in military time)
+const hours = {
+  eastend: [8, 19],
+  mills50: [7, 19],
+  ucf: [8, 19],
+}
+
+const IS_OPEN = 'data-open';
+const IS_CLOSED = 'data-closed';
+const IS_CLOSING_SOON = 'data-closing-soon';
+const ONE_MINUTE = 1000 * 60;
+
+// Universal “is it DST?" function
+// https://stackoverflow.com/questions/11887934/how-to-check-if-dst-daylight-saving-time-is-in-effect-and-if-so-the-offset
+function stdTimezoneOffset() {
+  const currentYear = new Date().getFullYear();
+  const jan = new Date(currentYear, 0, 1);
+  const jul = new Date(currentYear, 6, 1);
+  return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
+function updateTime() {
+  const isDST = new Date().getTimezoneOffset() < stdTimezoneOffset();
+  const estOffset = isDST ? -4 : -5;
+  const now = new Date().getUTCHours() + estOffset;
+
+  // update each location
+  Object.entries(hours).forEach(([loc, hours]) => {
+    const [open, close] = hours;
+    const $el = document.querySelector(`#loc-${loc}`);
+
+    // 1. reset element
+    [IS_OPEN, IS_CLOSED, IS_CLOSING_SOON].forEach(status => $el.removeAttribute(status));
+
+    // 2. update status
+    if (now === close - 1) {
+      $el.innerHTML = 'Closing Soon';
+      $el.setAttribute(IS_CLOSING_SOON, true);
+    } else if (now >= open && now < close) {
+      $el.innerHTML = 'Open';
+      $el.setAttribute(IS_OPEN, true);
+    } else {
+      $el.innerHTML = 'Closed';
+      $el.setAttribute(IS_CLOSED, true);
+    }
+  })
+}
+
+// update on load
+updateTime();
+
+// update every minute, in case this page is open for a while
+setInterval(() => {
+  updateTime();
+}, ONE_MINUTE);
+</script>

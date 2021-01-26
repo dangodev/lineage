@@ -4,7 +4,7 @@
     "build:css": "sass --no-source-map assets/app.scss:assets/app.css && postcss assets/app.css -o assets/app.min.css",
     "build:css:watch": "postcss --watch assets/app.css -o assets/app.min.css",
     "build:sass:watch": "sass --watch --no-source-map assets/app.scss assets/app.css",
-    "dev": "concurrently 'npm run build:sass:watch' 'npm run build:css:watch' 'theme watch'",
+    "dev": "concurrently 'npm run build:sass:watch' 'npm run build:css:watch' 'theme watch --allow-live'",
     "deploy": "npm run build && theme deploy",
     "lint": "stylelint 'assets/**/*.scss'"
   },
