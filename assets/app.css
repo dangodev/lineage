@@ -1141,6 +1141,9 @@ p {
  * Page
  * Styles for longform text layout
  */
+.Lineage__Page--Catering h2, .Lineage__Page--Catering h3, .Lineage__Page--Catering h4, .Lineage__Page--Catering h5, .Lineage__Page--Catering h6 {
+  margin-bottom: 2rem;
+}
 .Lineage__Page--Wholesale h1 {
   font-weight: 700;
   font-size: var(--f-u2);

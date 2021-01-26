@@ -7,6 +7,15 @@ $breakpoint-m: 800px;
 
 .Lineage__Page {
   // Modifiers
+  &--Catering {
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      margin-bottom: 2rem;
+    }
+  }
 
   &--Wholesale {
     & h1 {

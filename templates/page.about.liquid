@@ -4,8 +4,12 @@
     loading="lazy"
     width="2560"
     height="1708"
+    {%- if settings.about_banner -%}
     src="{{ settings.about_banner.src | img_url: '900x' }}"
     srcset="{{ settings.about_banner.src | img_url: '600x' }} 600w, {{ settings.about_banner.src | img_url: '900x' }} 900w, {{ settings.about_banner.src | img_url: '1280x' }} 1280w, {{ settings.about_banner.src | img_url: '2560x' }} 2560w"
+    {%- else -%}
+    src="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-13.jpg?v=1512097545"
+    {%- endif -%}
     sizes="100vw"
     alt="Jarrett working through a line of pourovers in the shop"
   />

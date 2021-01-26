@@ -4,9 +4,12 @@
     loading="lazy"
     width="2560"
     height="1708"
-    src="{{ hero_img }}"
+    {%- if settings.learn_banner -%}
     src="{{ settings.learn_banner.src | img_url: '900x' }}"
     srcset="{{ settings.learn_banner.src | img_url: '600x' }} 600w, {{ settings.learn_banner.src | img_url: '900x' }} 900w, {{ settings.learn_banner.src | img_url: '1280x' }} 1280w, {{ settings.learn_banner.src | img_url: '2560x' }} 2560w"
+    {%- else -%}
+    src="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-3.jpg?v=1510115261"
+    {%- endif -%}
     sizes="100vw"
     alt="lineup of coffee equipment: handgrinder, percolator, chemex, Kalita Wave, bonmac"
   />

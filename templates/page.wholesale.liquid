@@ -4,8 +4,12 @@
     loading="lazy"
     width="2560"
     height="1708"
+    {%- if settings.wholesale_banner %}
     src="{{ settings.wholesale_banner.src | img_url: '900x' }}"
     srcset="{{ settings.wholesale_banner.src | img_url: '600x' }} 600w, {{ settings.wholesale_banner.src | img_url: '900x' }} 900w, {{ settings.wholesale_banner.src | img_url: '1280x' }} 1280w, {{ settings.wholesale_banner.src | img_url: '2560x' }} 2560w"
+    {%- else -%}
+    src="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-9.jpg?v=1512097546"
+    {%- endif -%}
     sizes="100vw"
     alt="Jarrett and Ryan brewing coffee and experimenting in the shop"
   />
@@ -23,8 +27,12 @@
         loading="lazy"
         width="2560"
         height="1708"
+        {%- if settings.wholesale_flavor -%}
         src="{{ settings.wholesale_flavor.src | img_url: '900x' }}"
         srcset="{{ settings.wholesale_flavor.src | img_url: '600x' }} 600w, {{ settings.wholesale_flavor.src | img_url: '900x' }} 900w, {{ settings.wholesale_flavor.src | img_url: '1280x' }} 1280w, {{ settings.wholesale_flavor.src | img_url: '2560x' }} 2560w"
+        {%- else -%}
+        src="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-22.jpg?v=1512098576"
+        {%- endif %}
         sizes="(min-width: 600px) 100vw, 50vw"
         alt="Undershot of an espresso pour with crema visible from the portafilter"
       />
@@ -62,6 +70,7 @@
     </div>
   </section>
 
+  {%- comment -%}
   <section class="mt3 pb3">
     <div class="Lineage__Wrapper tac">
       <h2>Wholesale Deals</h2>
@@ -82,11 +91,12 @@
       </form>
     </div>
   </section>
+  {%- endcomment -%}
 
   <section class="mt4 pb6">
     <div class="Lineage__Wrapper tac">
       <h2 class="mt2 mb1">Ready to get started?</h2>
-      <p class="mt1">Send an email to <a href="mailto:wholesale@lineageroasting.com">wholesale@lineageroasting.com</a> when you’re ready to try our coffee.  </p>
+      <p class="mt1">Send an email to <a href="mailto:wholesale@lineageroasting.com">wholesale@lineageroasting.com</a> to start a conversation about a custom wholesale plan that meets your&nbsp;needs.</p>
     </div>
   </section>
 </article>

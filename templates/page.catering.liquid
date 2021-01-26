@@ -1,0 +1,25 @@
+<header class="Lineage__Hero">
+  <img
+    class="ofcover"
+    loading="lazy"
+    width="2560"
+    height="1708"
+    {%- if settings.catering_banner %}
+    src="{{ settings.catering_banner.src | img_url: '900x' }}"
+    srcset="{{ settings.catering_banner.src | img_url: '600x' }} 600w, {{ settings.catering_banner.src | img_url: '900x' }} 900w, {{ settings.catering_banner.src | img_url: '1280x' }} 1280w, {{ settings.catering_banner.src | img_url: '2560x' }} 2560w"
+    {%- else -%}
+    src="https://cdn.shopify.com/s/files/1/0746/4367/files/catering_bar.jpg?v=1611679854"
+    {%- endif -%}
+    sizes="100vw"
+    alt=""
+  />
+</header>
+
+<article class="Lineage__Page Lineage__Page--Catering bcow">
+  <div class="Lineage__Wrapper">
+    <section class="pt2 pb4">
+      <h1 class="pt4 mb4">{{ page.title }}</h1>
+      <div class="pb2">{{ page.content }}</div>
+    </section>
+  </div>
+</article>
